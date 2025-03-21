@@ -1,4 +1,5 @@
-window.scrollTo(0, 0); 
+history.scrollRestoration = "manual";
+window.scrollTo(0, 0);
 
 var tl = gsap.timeline();
 var tl2 = gsap.timeline();
@@ -52,7 +53,6 @@ tl.from("nav h1", {
   opacity: 0,
 });
 
-
 tl.from("nav", {
   y: -20,
   duration: 0.5,
@@ -70,8 +70,87 @@ tl.from("nav h4", {
 tl.from("nav h1 img", {
   y: 200,
   x: 200,
-  rotate:100,
-  scaleX:-1,
+  rotate: 100,
+  scaleX: -1,
   duration: 1,
   opacity: 0,
+});
+
+let chars = document.getElementsByClassName("chars")[0];
+let characters = [
+  {
+    img: "./assets/harry.png",
+    name: "Harry Potter",
+    desc: "I'm Harry Potter, the Boy Who Lived.Hogwarts showed me that magic, friendship, and bravery can change everything.",
+  },
+  {
+    img: "./assets/hermione.png",
+    name: "Hermione Granger",
+    desc: "I’m Hermione Granger, the brightest witch of my age. I believe that books, cleverness, and a bit of bravery can solve almost anything",
+  },
+  {
+    img: "./assets/ron.png",
+    name: "Ron Weasley",
+    desc: "I’m Ron Weasley, a proud Gryffindor and Harry’s best mate. I may not be the chosen one, but I’ll always stand by my friends.",
+  },
+  {
+    img: "./assets/draco.png",
+    name: "Draco Malfoy",
+    desc: "I’m Draco Malfoy, a pure-blood Slytherin. Power, ambition, and family legacy mean everything to me.",
+  },
+  {
+    img: "./assets/ginny.png",
+    name: "Ginny Weasley",
+    desc: "I’m Ginny Weasley, a fierce Gryffindor, a skilled witch, and someone who never backs down from a fight.",
+  },
+  {
+    img: "./assets/luna.png",
+    name: "Luna Lovegood",
+    desc: "I’m Luna Lovegood, a proud Ravenclaw who sees the world differently. Being yourself is the greatest magic of all!.",
+  },
+  {
+    img: "./assets/fred.png",
+    name: "Fred Weasley",
+    desc: "I’m Fred Weasley, the funnier half of the Weasley twins. Pranks, jokes, and a bit of mischief—that’s what life’s all about!",
+  },
+  {
+    img: "./assets/george.png",
+    name: "George Weasley",
+    desc: "I’m George Weasley, the other half of the legendary Weasley twins. Life’s better with laughter, pranks, and a bit of mischief!",
+  },
+  {
+    img: "./assets/dumbledore.jpg",
+    name: "Albus Dumbledore",
+    desc: "I’m Albus Dumbledore, Headmaster of Hogwarts. Words, wisdom, and love are the greatest magic of all.",
+  },
+  {
+    img: "./assets/snape.png",
+    name: "Severus Snape",
+    desc: "I’m Severus Snape, Potions Master of Hogwarts. You may not understand me, but everything I do is for a reason",
+  },
+  {
+    img: "./assets/minevra.png",
+    name: "Minerva Mcgonagall",
+    desc: "I’m Minerva McGonagall, Hogwarts professor and a proud Gryffindor who values wisdom, discipline, and courage.",
+  },
+  {
+    img: "./assets/hagrid.png",
+    name: "Rubeus Hagrid",
+    desc: "I’m Rubeus Hagrid, Keeper of Keys and Grounds at Hogwarts. I may be big, but my heart’s even bigger!",
+  },
+  {
+    img: "./assets/voldemort.png",
+    name: "Lord Voldemort",
+    desc: "I am Lord Voldemort, the most powerful dark wizard of all time. Fear and power are the only true magic.",
+  },
+];
+
+characters.forEach((char, index) => {
+  chars.innerHTML += `<div class="boxes ">
+            <img src='${char.img}' alt="Harry Potter"/>
+            <div>
+              <h2>${char.name}</h2>
+              <p>${char.desc}</p>
+            </div>
+          </div>`;
 });
