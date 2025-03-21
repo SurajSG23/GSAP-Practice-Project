@@ -4,7 +4,76 @@ window.scrollTo(0, 0);
 var tl = gsap.timeline();
 var tl2 = gsap.timeline();
 var mouse = document.querySelector(".mouse-harry");
+var mouse2 = document.querySelector(".mouse-hermione");
+var mouse3 = document.querySelector(".mouse-ron");
 let previousX = 0;
+let tl3 = gsap.timeline();
+
+fly();
+function fly() {
+  console.log("fly");
+  tl3.to(mouse2, {
+    x: 2000,
+    top: "random(100, 700)",
+    duration: 11,
+    delay: "random(5, 10)",
+    ease: "power1.inOut",
+    onUpdate: function () {
+      gsap.set(mouse2, { scaleX: 1 });
+    },
+  });
+
+  tl3.to(mouse3, {
+    x: -1800,
+    top: "random(100, 600)",
+    duration: 11,
+    delay: "random(5, 10)",
+    ease: "power1.inOut",
+    onUpdate: function () {
+      gsap.set(mouse3, { scaleX: -1 });
+    },
+  });
+  
+  tl3.to(mouse2, {
+    x: 10,
+    top: "random(100, 700)",
+    duration: 12,
+    delay: "random(10, 15)",
+    ease: "power1.inOut",
+    onUpdate: function () {
+      gsap.set(mouse2, { scaleX: -1 });
+    },
+  });
+
+  tl3.to(mouse3, {
+    x: 200,
+    top: "random(100, 900)",
+    duration: 11,
+    delay: "random(10, 15)",
+    ease: "power1.inOut",
+    onUpdate: function () {
+      gsap.set(mouse3, { scaleX: 1 });
+    },
+  });
+  gsap.to(mouse2, {
+    y: "+=30",
+    duration: 1,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+  });
+  gsap.to(mouse3, {
+    y: "+=30",
+    duration: 1,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+  });
+}
+
+setInterval(() => {
+  fly();
+}, 50000);
 
 window.addEventListener("mousemove", function (dets) {
   if (dets.clientX > previousX) {

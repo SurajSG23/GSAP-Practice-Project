@@ -141,12 +141,19 @@ nav button {
   }
 }
 
-.mouse img {
+.mouse img, .mouse2 img,.mouse3 img {
   width: 60px;
   z-index: 999;
   position: fixed;
 }
-
+.mouse2 img{
+  top: 25%;
+  left: -330px;
+}
+.mouse3 img{
+  top: 80%;
+  right: -100px;
+}
 .center2 {
   width: 100%;
   min-height: 80%;
