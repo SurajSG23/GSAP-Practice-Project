@@ -132,8 +132,9 @@ nav button {
   display: flex;
   justify-content: center;
   align-items: center;
+
   & .img {
-    width: 100%;
+    width: 75%;
     height: 100%;
     background-image: url("./assets/hat.png");
     background-size: contain;
@@ -141,19 +142,34 @@ nav button {
   }
 }
 
-.mouse img, .mouse2 img,.mouse3 img {
+.mouse img,
+.mouse2 img,
+.mouse3 img,
+.mouse4 video,
+.mouse5 img {
   width: 60px;
   z-index: 999;
   position: fixed;
 }
-.mouse2 img{
+.mouse4 video {
+  width: 180px;
+  top: 25%;
+  left: -330px;
+  mix-blend-mode: multiply;
+}
+.mouse2 img,
+.mouse5 img {
   top: 25%;
   left: -330px;
 }
-.mouse3 img{
+.mouse5 img {
+  cursor: pointer;
+}
+.mouse3 img {
   top: 80%;
   right: -100px;
 }
+
 .center2 {
   width: 100%;
   min-height: 80%;
@@ -165,6 +181,10 @@ nav button {
   & h1 {
     font-size: 50px;
     font-weight: 900;
+    overflow-y: hidden;
+    & span {
+      display: inline-block;
+    }
   }
 }
 

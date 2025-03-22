@@ -6,12 +6,48 @@ var tl2 = gsap.timeline();
 var mouse = document.querySelector(".mouse-harry");
 var mouse2 = document.querySelector(".mouse-hermione");
 var mouse3 = document.querySelector(".mouse-ron");
+var mouse4 = document.querySelector(".dementor");
+var mouse5 = document.querySelector(".mouse-snitch");
 let previousX = 0;
 let tl3 = gsap.timeline();
+let tl4 = gsap.timeline();
+
+function dementorMove() {
+  tl4.to(mouse4, {
+    x: 2000,
+    top: "random(100, 400)",
+    duration: 30,
+    ease: "power1.inOut",
+    onUpdate: function () {
+      gsap.set(mouse4, { scaleX: -1 });
+    },
+  });
+
+  tl4.to(mouse4, {
+    x: 10,
+    top: "random(100, 200)",
+    duration: 30,
+    ease: "power1.inOut",
+    onUpdate: function () {
+      gsap.set(mouse4, { scaleX: 1 });
+    },
+  });
+
+  gsap.to(mouse4, {
+    y: "+=10",
+    duration: 1,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+  });
+}
+
+setTimeout(() => {
+  dementorMove();
+}, 100000);
 
 fly();
 function fly() {
-  console.log("fly");
   tl3.to(mouse2, {
     x: 2000,
     top: "random(100, 700)",
@@ -33,7 +69,15 @@ function fly() {
       gsap.set(mouse3, { scaleX: -1 });
     },
   });
-  
+  tl3.to(mouse5, {
+    x: 2000,
+    top: "random(100, 700)",
+    duration: 4,
+    ease: "power1.inOut",
+    onUpdate: function () {
+      gsap.set(mouse5, { scaleX: 1 });
+    },
+  });
   tl3.to(mouse2, {
     x: 10,
     top: "random(100, 700)",
@@ -44,7 +88,15 @@ function fly() {
       gsap.set(mouse2, { scaleX: -1 });
     },
   });
-
+  tl3.to(mouse5, {
+    x: 10,
+    top: "random(100, 700)",
+    duration: 4,
+    ease: "power1.inOut",
+    onUpdate: function () {
+      gsap.set(mouse2, { scaleX: -1 });
+    },
+  });
   tl3.to(mouse3, {
     x: 200,
     top: "random(100, 900)",
@@ -55,7 +107,15 @@ function fly() {
       gsap.set(mouse3, { scaleX: 1 });
     },
   });
+
   gsap.to(mouse2, {
+    y: "+=30",
+    duration: 1,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+  });
+  gsap.to(mouse5, {
     y: "+=30",
     duration: 1,
     repeat: -1,
@@ -222,4 +282,59 @@ characters.forEach((char, index) => {
               <p>${char.desc}</p>
             </div>
           </div>`;
+});
+
+function textEffect() {
+  let h1Text = document.querySelector(".center2 h1").textContent;
+
+  let splitText = h1Text.split("");
+
+  let c = "";
+
+  for (let i = 0; i < splitText.length; i++) {
+    if (splitText[i] == " ") {
+      splitText[i] = "&nbsp;";
+    }
+    c += `<span>${splitText[i]}</span>`;
+  }
+
+  document.querySelector(".center2 h1").innerHTML = c;
+
+  let half = splitText.length / 2;
+
+  for (let i = 0; i < splitText.length; i++) {
+    if (i < half) {
+      document.querySelectorAll(".center2 h1 span")[i].classList.add("left");
+    } else {
+      document.querySelectorAll(".center2 h1 span")[i].classList.add("right");
+    }
+  }
+
+  gsap.from(".left", {
+    y: 50,
+    opacity: 0,
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: ".left",
+      scroller: "body",
+      start: "top 80%",
+    },
+  });
+
+  gsap.from(".right", {
+    y: 50,
+    opacity: 0,
+    stagger: -0.1,
+    scrollTrigger: {
+      trigger: ".left",
+      scroller: "body",
+      start: "top 80%",
+    },
+  });
+}
+
+textEffect();
+
+mouse5.addEventListener("click", () => {
+  alert("You caught the snitch. You win!");
 });
