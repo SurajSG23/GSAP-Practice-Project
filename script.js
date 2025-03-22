@@ -336,5 +336,5 @@ function textEffect() {
 textEffect();
 
 mouse5.addEventListener("click", () => {
-  alert("You caught the snitch. You win!");
+  alert("Great!!! You caught the snitch!");
 });
