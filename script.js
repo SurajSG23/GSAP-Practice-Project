@@ -47,6 +47,7 @@ setTimeout(() => {
 }, 100000);
 
 fly();
+
 function fly() {
   tl3.to(mouse2, {
     x: 2000,
@@ -154,26 +155,21 @@ window.addEventListener("mousemove", function (dets) {
   });
 });
 
-gsap.to(".img", {
+function animateLandingPage(){
+
+  
+  gsap.to(".img", {
   y: 20,
   duration: 1.5,
   repeat: -1,
   yoyo: true,
   ease: "power1.inOut",
 });
-
-tl2.from(".center .part1 h1", {
-  y: 100,
-  duration: 0.5,
+gsap.from(".img", {
+  x: -100,
   opacity: 0,
-  stagger: 0.2,
-});
-
-tl2.from(".center .part1 p", {
-  y: 100,
-  duration: 0.5,
-  opacity: 0,
-  stagger: 0.2,
+  duration: 1.5,
+  ease: "power1.inOut",
 });
 
 tl.from("nav h1", {
@@ -204,6 +200,23 @@ tl.from("nav h1 img", {
   duration: 1,
   opacity: 0,
 });
+
+tl2.from(".center .part1 h1", {
+  x: -100,
+  duration: 0.5,
+  delay: 1,
+  opacity: 0,
+  stagger: 0.2,
+});
+
+tl2.from(".center .part1 p", {
+  x: 100,
+  duration: 0.5,
+  opacity: 0,
+  stagger: 0.2,
+});
+}
+// animateLandingPage();
 
 let chars = document.getElementsByClassName("chars")[0];
 let characters = [
@@ -318,6 +331,7 @@ function textEffect() {
       trigger: ".left",
       scroller: "body",
       start: "top 80%",
+      toggleActions: "play reverse play reverse",
     },
   });
 
@@ -329,12 +343,66 @@ function textEffect() {
       trigger: ".left",
       scroller: "body",
       start: "top 80%",
+      toggleActions: "play reverse play reverse",
     },
   });
 }
 
-textEffect();
+// textEffect();
 
 mouse5.addEventListener("click", () => {
-  alert("Great!!! You caught the snitch!");
+  alert("Brilliant! You caught the Snitch!✨");
 });
+
+function animateChars() {
+  document.querySelectorAll(".boxes").forEach((box) => {
+    box.addEventListener("mouseenter", () => {
+      gsap.to(box, {
+        scale: 1.05,
+        duration: 0.5,
+      });
+    });
+
+    box.addEventListener("mouseleave", () => {
+      gsap.to(box, {
+        scale: 1,
+        duration: 0.5,
+      });
+    });
+  });
+
+  gsap.from(".boxes", {
+    x: 100,
+    opacity: 0,
+    stagger: 0.1,
+    duration: 2,
+    scrollTrigger: {
+      trigger: ".boxes",
+      scroller: "body",
+      start: "top 70%",
+    },
+  });
+
+  gsap.from(".boxes img", {
+    x: -200,
+    opacity: 0,
+    stagger: 0.1,
+    duration: 2,
+    scrollTrigger: {
+      trigger: ".boxes ",
+      scroller: "body",
+      start: "top 70%",
+      end: "top 0",
+    },
+  });
+
+  gsap.to(".boxes", {
+    y: "random(10,20)",
+    ease: "power1.inOut",
+    stagger: 0.15,
+    duration: 2,
+    repeat: -1,
+    yoyo: true,
+  });
+}
+// animateChars();
