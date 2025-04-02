@@ -216,7 +216,7 @@ tl2.from(".center .part1 p", {
   stagger: 0.2,
 });
 }
-// animateLandingPage();
+animateLandingPage();
 
 let chars = document.getElementsByClassName("chars")[0];
 let characters = [
@@ -348,7 +348,7 @@ function textEffect() {
   });
 }
 
-// textEffect();
+textEffect();
 
 mouse5.addEventListener("click", () => {
   alert("Brilliant! You caught the Snitch!✨");
@@ -405,4 +405,4 @@ function animateChars() {
     yoyo: true,
   });
 }
-// animateChars();
+animateChars();
